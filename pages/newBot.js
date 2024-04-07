@@ -1,33 +1,43 @@
-import Head from 'next/head';
+import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import SideMenu from "./components/SideMenu";
 
-function newBot() {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [selectedImage, setSelectedImage] = useState('ChatGPT.png');
-  const myConfig = require('./config');
+function NewBot() {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [selectedImage, setSelectedImage] = useState("ChatGPT.png");
+  const myConfig = require("./config");
   const [theme, setTheme] = useState(myConfig.theme);
   const images = [
-    "ChatGPT.png", "boy1.png", "boy2.png", "boy3.png", "boy4.png", "boy5.png", "girl1.png", "girl2.png", "girl3.png", "girl4.png", "girl5.png"
+    "ChatGPT.png",
+    "boy1.png",
+    "boy2.png",
+    "boy3.png",
+    "boy4.png",
+    "boy5.png",
+    "girl1.png",
+    "girl2.png",
+    "girl3.png",
+    "girl4.png",
+    "girl5.png",
   ];
 
   const handleAdd = async () => {
     try {
       const formData = `name=${name}&description=${description}&selectedImage=${selectedImage}`;
 
-      const response = await fetch('/api/addBot', {
-        method: 'POST',
+      const response = await fetch("/api/addBot", {
+        method: "POST",
         body: formData,
       });
       if (response.ok) {
-        console.log('Configuration updated successfully');
+        console.log("Configuration updated successfully");
       } else {
-        console.error('Error updating configuration');
+        console.error("Error updating configuration");
       }
     } catch (error) {
-      console.error('API request failed', error);
+      console.error("API request failed", error);
     }
   };
 
@@ -45,14 +55,22 @@ function newBot() {
         <div className="row">
           <SideMenu page="newBot" />
           <div className="col-10 col-sm-11 p-0 m-0">
-
-            <nav id="bots-list-header" className="navbar navbar-expand navbar-dark ps-2">
+            <nav
+              id="bots-list-header"
+              className="navbar navbar-expand navbar-dark ps-2"
+            >
               <div className="container-fluid">
-                <a className="navbar-brand" href="#">Settings</a>
+                <a className="navbar-brand" href="#">
+                  Settings
+                </a>
               </div>
             </nav>
 
-            <div className={`content container-fluid ps-2 ps-md-5 py-4 ${theme === "neon" || theme === "dark" ? "text-light" : ""}`}>
+            <div
+              className={`content container-fluid ps-2 ps-md-5 py-4 ${
+                theme === "neon" || theme === "dark" ? "text-light" : ""
+              }`}
+            >
               <h3>Add a new bot</h3>
               <form id="new-bot-form">
                 <div className="form-group">
@@ -90,13 +108,20 @@ function newBot() {
                         key={index}
                         src={image}
                         alt={image}
-                        className={`image-item m-2 ${selectedImage === image ? 'selected' : ''}`}
+                        className={`image-item m-2 ${
+                          selectedImage === image ? "selected" : ""
+                        }`}
                         onClick={() => handleImageClick(image)}
                       />
                     ))}
                   </div>
                 </div>
-                <button id="save-button" type="button" className="btn mt-3" onClick={handleAdd}>
+                <button
+                  id="save-button"
+                  type="button"
+                  className="btn mt-3"
+                  onClick={handleAdd}
+                >
                   Add
                 </button>
               </form>
@@ -108,4 +133,4 @@ function newBot() {
   );
 }
 
-export default newBot;
+export default NewBot;
