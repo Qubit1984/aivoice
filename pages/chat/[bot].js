@@ -221,8 +221,8 @@ export default function ChatRoom() {
   const polly = new AWS.Polly({
     region: "ap-northeast-1", // 替换为你的AWS区域
     credentials: {
-      accessKeyId: "AKIAQ3EGRHW3KSXIHXGR",
-      secretAccessKey: "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",
+      accessKeyId: process.env.NEXT_PUBLIC_POLLY_KEY_ID,
+      secretAccessKey: process.env.NEXT_PUBLIC_POLLY_SECRET_KEY,
     },
   });
 
