@@ -284,7 +284,7 @@ export default function ChatRoom() {
               </nav>
               <div id="chat-messages">
                 {chatMessages.map((message, index) => (
-                  <div>
+                  <div key={index}>
                     {" "}
                     <div
                       key={index}

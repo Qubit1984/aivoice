@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import SideMenu from "./components/SideMenu";
-
+import Image from "next/image";
 function NewBot() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -10,17 +10,17 @@ function NewBot() {
   const myConfig = require("./config");
   const [theme, setTheme] = useState(myConfig.theme);
   const images = [
-    "ChatGPT.png",
-    "boy1.png",
-    "boy2.png",
-    "boy3.png",
-    "boy4.png",
-    "boy5.png",
-    "girl1.png",
-    "girl2.png",
-    "girl3.png",
-    "girl4.png",
-    "girl5.png",
+    "/ChatGPT.png",
+    "/boy1.png",
+    "/boy2.png",
+    "/boy3.png",
+    "/boy4.png",
+    "/boy5.png",
+    "/girl1.png",
+    "/girl2.png",
+    "/girl3.png",
+    "/girl4.png",
+    "/girl5.png",
   ];
 
   const handleAdd = async () => {
@@ -104,10 +104,12 @@ function NewBot() {
                   <label htmlFor="image">Select an image:</label>
                   <div className="image-grid">
                     {images.map((image, index) => (
-                      <img
+                      <Image
                         key={index}
                         src={image}
                         alt={image}
+                        width={100}
+                        height={100}
                         className={`image-item m-2 ${
                           selectedImage === image ? "selected" : ""
                         }`}
