@@ -4,8 +4,8 @@ import AWS from "aws-sdk";
 const polly = new AWS.Polly({
   region: "ap-northeast-1", // 替换为你的AWS区域
   credentials: {
-    accessKeyId: "AKIAQ3EGRHW3KSXIHXGR",
-    secretAccessKey: "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",
+    accessKeyId: process.env.POLLY_ACCESS_KEY_ID,
+    secretAccessKey: process.env.POLLY_SECRET_ACCESS_KEY,
   },
 });
 
