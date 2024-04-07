@@ -46,8 +46,8 @@ export default function Home() {
                 NEXT_PUBLIC_OPENAI_API_KEY = YOUR_KEY_HERE
               </p>
               <p>
-                In the chat page, you can click on 'New bot' to add a new bot,
-                write bot name and description, and select an image.
+                In the chat page, you can click on &quot;New bot&quot; to add a
+                new bot, write bot name and description, and select an image.
               </p>
               <Link href="./chat/">
                 <button id="chats-button" className="btn btn-secondary">
